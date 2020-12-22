@@ -39,7 +39,7 @@ def extract_inhabited_cluster(args):
         deepcluster = Kmeans(i, 'rural')
         features = compute_features(clusterloader, convnet, len(clusterset), 128) 
         print(features.shape)
-        clustering_loss, p_label = deepcluster.cluster(features[968:])
+        clustering_loss, p_label = deepcluster.cluster(features[968:]) ##rural from 968
         score = silhouette_score(features[968:], p_label.detach().cpu().numpy(), metric="euclidean")
         print("score of cluster {} in rural is {}".format(i, score))
         deepcluster = Kmeans(i, 'city')
